@@ -1,0 +1,180 @@
+{{define "login"}}
+<script src="../scripts/login.js"></script>
+<link rel="stylesheet" href="/static/styles.css">
+<head>
+    <style>
+        .container {
+            width: 15em;
+            height: 15em;
+            position: relative;
+            visibility: hidden;
+        }
+
+        .captcha-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 11em;
+            padding: 8px;
+            font-family: Arial, sans-serif;
+        }
+
+        .captcha-checkbox-pot{
+            width: 1px;
+            height: 1px;
+        }
+
+        .captcha-checkbox {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
+
+        .captcha-text {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .logo {
+            width: 32px;
+            height: 32px;
+        }
+
+        .popup {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            width: 250px;
+            text-align: center;
+        }
+
+        .popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup button {
+            margin-top: 10px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0);
+            z-index: 999;
+        }
+
+        .overlay.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="statement-box">    
+        <div class="createItem">
+            <button class="button" id="newUser">Create new user</button>
+            <div class="container">
+                <div class="captcha-box">
+                    <img class="logo" src="img.png">
+                    <input type="checkbox" class="captcha-checkbox-pot" id="captcha-pot">
+                    <input type="checkbox" class="captcha-checkbox" id="captcha-checkbox">
+                    <label for="captcha-checkbox" class="captcha-text">I am not a robot</label>
+        
+                    <div class="popup" id="popup">
+                        <p>Solve this challenge to proceed:</p>
+                        <p id="captcha-prompt"><strong>{{ .NumberA }} + {{ .NumberB }}</strong></p>
+                        <input type="text" id="captcha-answer">
+                        <button onclick="verifyCaptcha()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="overlay" id="overlay"></div>
+        </div>
+    
+        <div id="log-items">
+            <div class="logItem"><p>Login to answer the poll</p></div>
+            <div class="logItem"><input type="text" class="user" placeholder="Username" id="username">{{ .Username }}</div>
+            <div class="logItem">
+                <button class="button" id="login">Login</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const signupButton = document.getElementById("newUser");
+            const logItems = document.getElementById("log-items");
+            const captchaContainer = document.querySelector(".container");
+            const potbox = document.getElementById('captcha-pot');
+            const checkbox = document.getElementById('captcha-checkbox');
+            const popup = document.getElementById('popup');
+            const overlay = document.getElementById('overlay');
+            let correct = false;
+            let potboxClicked = false;
+    
+            signupButton.addEventListener('click', function() {
+                logItems.style.visibility = "hidden";
+                captchaContainer.style.visibility = "visible";
+            });
+    
+            // Event listener to handle honeypot checkbox clicks
+            potbox.addEventListener('click', function() {
+                potboxClicked = true;
+            });
+    
+            // Show popup if main checkbox is clicked and captcha not solved
+            checkbox.addEventListener('click', function (event) {
+                if (!correct) {
+                    event.preventDefault(); // Prevent checkbox from being checked
+                    showPopup();
+                }
+            });
+    
+            function showPopup() {
+                popup.classList.add('show'); // Show the popup
+                overlay.classList.add('show'); // Show the overlay
+            }
+    
+            function hidePopup() {
+                popup.classList.remove('show'); // Hide the popup
+                overlay.classList.remove('show'); // Hide the overlay
+            }
+    
+            function verifyCaptcha() {
+                if (potboxClicked) {
+                    alert('Incorrect answer. Try again.');
+                    return;
+                }
+    
+                const answer = document.getElementById('captcha-answer').value;
+                if (answer === '7') { // Example correct answer
+                    correct = true;
+                    checkbox.checked = true;
+                    checkbox.disabled = true; // Prevent further interaction
+                    hidePopup();
+                } else {
+                    alert('Incorrect answer. Try again.');
+                }
+            }
+    
+            overlay.addEventListener('click', hidePopup);
+        });
+    </script>
+    </body>
+{{end}}

@@ -1,0 +1,173 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.header {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color:#003f71;
+}
+.logo {
+    height: 150px;
+}
+.header h1 {
+    font-size: 24px;
+    text-align: left;
+    max-width: 80%;
+}
+.header p {
+    text-align: left;
+}
+.question {
+    margin: 20px 0;
+}
+.head {
+    display: flex;
+    justify-content: right;
+}
+
+.votes {
+    padding: 30px 70px 30px 70px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.votes img {
+    padding: 20px;
+    background-color: #003f71;
+    border-radius: 40px;
+}
+
+.votes button {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: inherit;
+    border: none;
+}
+
+.votes img:hover {
+    scale: 105%;
+    background-color: #125c98;
+}
+
+.votes p {
+    color: #003f71;
+    font-family: inherit;
+    padding: 0;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    height: 10px;
+    margin: 10px 0;
+}
+.progress {
+    width: 66%;
+    background-color: #007bff;
+    height: 100%;
+    border-radius: 5px;
+}
+.statement-box {
+    background-color: #f0f8ff;
+    padding: 30px;
+    border-radius: 40px;
+    margin: 20px 0;
+}
+.statement-box p {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: #003f71;
+    padding: 5px;
+    margin: 0;
+}
+
+.logItem {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+
+.user {
+    border: none;
+    padding: 5px;
+    width: 350px;
+}
+
+.button {
+    padding: 5px 0px;
+    width: 300px;
+    border: none;
+    background-color: #003f71;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+.button:hover {
+    scale: 103%;
+    cursor: pointer;
+}
+
+.statement-buttons {
+    display: block;
+    justify-content: center;
+    margin: 10px 0;
+}
+.statement-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.suggestion-box {
+    margin: 20px 0;
+}
+.suggestion-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.popup {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,
+            0,
+            0,
+            0.4);
+    display: none;
+}
+
+.popup-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888888;
+    width: 30%;
+    font-weight: bolder;
+}
+
+.popup-content button {
+    display: block;
+    margin: 0 auto;
+}
+
+.show {
+    display: block;
+}

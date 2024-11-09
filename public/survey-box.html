@@ -1,0 +1,24 @@
+{{ define "survey-box" }}
+<link rel="stylesheet" href="/static/styles.css">
+
+<div class="head">
+    <p>Logged in as: {{ .Username }}<span id="user"></span></p>
+</div>
+
+
+<div class="logo">
+    <p></p>
+</div>
+
+<div class="header">
+    <h1>{{ .SurveyTitle }}</h1>
+    <p>{{ .SurveyDescription }}</p>
+</div>
+
+<div class="question">
+    <div class="progress-bar">
+        <div class="progress" style="width: 0%;"></div>
+    </div>
+    <p>{{ .QuestionsAnswered }}/{{ .QuestionsTotal }}</p>
+</div>
+{{ end }}

@@ -1,0 +1,26 @@
+{{ define "survey.html" }}
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>polis</title>
+    <link rel="stylesheet" href="./static/index.css">
+    <script src="main.js"></script>
+
+</head>
+<body>
+   {{ template "survey-box" .}}
+
+    {{if .IsAuth}}
+    
+    {{ template "question-box" .}}
+
+    {{ else }}
+    
+    {{ template "login" .}}
+    
+    {{ end }}
+</body>
+</html>
+{{ end }}

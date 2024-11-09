@@ -1,0 +1,16 @@
+{{ define ""captcha" }}
+<div class="captcha-box">
+    <img class="logo" src="img.png">
+    <input type="checkbox" class="captcha-checkbox-pot" id="captcha-pot">
+    <input type="checkbox" class="captcha-checkbox" id="captcha-checkbox">
+    <label for="captcha-checkbox" class="captcha-text">I am not a robot</label>
+
+    <div class="popup" id="popup">
+        <p>Solve this challenge to proceed:</p>
+        <p id="captcha-prompt"><strong>{{ .NumberA }} + {{ .NumberB }}</strong></p>
+        <input type="text" id="captcha-answer">
+        <button onclick="verifyCaptcha()">Submit</button>
+    </div>
+</div>
+<script src="/static/captcha.js"></script>
+{{ end }}

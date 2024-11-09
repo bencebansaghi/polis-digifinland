@@ -1,0 +1,29 @@
+{{define "question-box"}}
+<link rel="stylesheet" href="/static/styles.css">
+
+<div class="statement-box">
+    <div class="logItem"><p style="margin-bottom: 40px;">{{ .QuesitonText }}</p></div>
+    <div class="votes">
+        <button>
+            <img src="icons/thumbsUp.png" alt="Thumbs Up">
+            <p style="font-size: small;">Samaa mieltä</p>
+        </button>
+        <button>
+            <img src="icons/arrow.png" alt="Ohita/Neutraali">
+            <p style="font-size: small;">Ohita/Neutraali</p>
+        </button>
+        <button>
+            <img src="icons/thumbsDown.png" alt="Thumbs Down">
+            <p style="font-size: small;">Eri mieltä</p>
+        </button>
+    </div>
+</div>
+
+<div class="suggestion-box">
+    <p>Puuttuuko kyselystä</p>
+    <p>Ehdota</p>  
+    <input type="text" placeholder="Kirjoita tähän">
+    <button class="button">Ehdota</button>
+</div>
+
+{{ end }}
