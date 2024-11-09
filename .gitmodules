@@ -1,5 +1,0 @@
-[submodule "polis"]
-    path = polis
-    url = https://github.com/compdemocracy/polis.git
-    branch = stable
-    update = merge
